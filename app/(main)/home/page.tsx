@@ -16,11 +16,11 @@ import {
 import { faDatabase, faServer } from "@fortawesome/free-solid-svg-icons";
 export default function Page() {
   const handleScroll = () => {
-    let konten = document.getElementById("konten");
+    let konten: HTMLElement | null = document.getElementById("konten")!;
 
-    let home = document.getElementById("home");
-    let about = document.getElementById("about");
-    let portofolio = document.getElementById("portofolio");
+    let home: HTMLElement | null = document.getElementById("home")!;
+    let about: HTMLElement | null = document.getElementById("about")!;
+    let portofolio: HTMLElement | null = document.getElementById("portofolio")!;
 
     let pos_konten = konten?.scrollTop - 20 + konten?.offsetHeight;
     let posHome = home?.offsetTop + home?.offsetHeight;
