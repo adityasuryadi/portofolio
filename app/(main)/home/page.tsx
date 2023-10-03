@@ -14,6 +14,7 @@ import {
   faDocker,
 } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase, faServer } from "@fortawesome/free-solid-svg-icons";
+
 export default function Page() {
   const handleScroll = () => {
     let konten: HTMLElement | null = document.getElementById("konten")!;
