@@ -71,7 +71,7 @@ export default function Page() {
                     <div className="py-8 px-4 mx-5 max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
                       <div className="flex flex-col justify-center">
                         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">
-                          Hello, I'm Aditya
+                          Hello, I"m Aditya
                         </h1>
                         <p className="mb-6 text-lg font-normal text-white lg:text-xl dark:text-gray-400">
                           Full Stack Developer
