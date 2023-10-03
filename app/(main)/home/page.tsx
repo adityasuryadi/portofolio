@@ -16,33 +16,33 @@ import {
 import { faDatabase, faServer } from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
-  const handleScroll = () => {
-    let konten: HTMLElement | null = document.getElementById("konten")!;
-
-    let home: HTMLElement | null = document.getElementById("home")!;
-    let about: HTMLElement | null = document.getElementById("about")!;
-    let portofolio: HTMLElement | null = document.getElementById("portofolio")!;
-
-    let pos_konten = konten?.scrollTop - 20 + konten?.offsetHeight;
-    let posHome = home?.offsetTop + home?.offsetHeight;
-    let posAbout = about?.offsetTop + about?.offsetHeight;
-    let posPortofolio = portofolio?.offsetTop + portofolio?.offsetHeight;
-
-    let distanceHome = posHome - pos_konten;
-    let distanceAbout = posAbout - pos_konten;
-    let distancePortofolio = posPortofolio - pos_konten;
-    let min = Math.min(
-      ...[distanceHome, distanceAbout, distancePortofolio].filter(
-        (num) => num > 0
-      )
-    );
-    if (min === distanceHome) setSectionActive("home");
-    if (min === distanceAbout) setSectionActive("about");
-    if (min === distancePortofolio) setSectionActive("portofolio");
-  };
-  let konten = document.getElementById("konten");
   const [sectionActive, setSectionActive] = useState("home");
   useEffect(() => {
+    const handleScroll = () => {
+      let konten: HTMLElement | null = document.getElementById("konten")!;
+
+      let home: HTMLElement | null = document.getElementById("home")!;
+      let about: HTMLElement | null = document.getElementById("about")!;
+      let portofolio: HTMLElement | null =
+        document.getElementById("portofolio")!;
+
+      let pos_konten = konten?.scrollTop - 20 + konten?.offsetHeight;
+      let posHome = home?.offsetTop + home?.offsetHeight;
+      let posAbout = about?.offsetTop + about?.offsetHeight;
+      let posPortofolio = portofolio?.offsetTop + portofolio?.offsetHeight;
+
+      let distanceHome = posHome - pos_konten;
+      let distanceAbout = posAbout - pos_konten;
+      let distancePortofolio = posPortofolio - pos_konten;
+      let min = Math.min(
+        ...[distanceHome, distanceAbout, distancePortofolio].filter(
+          (num) => num > 0
+        )
+      );
+      if (min === distanceHome) setSectionActive("home");
+      if (min === distanceAbout) setSectionActive("about");
+      if (min === distancePortofolio) setSectionActive("portofolio");
+    };
     let konten = document.getElementById("konten");
     konten?.addEventListener("scroll", handleScroll);
     return () => {
