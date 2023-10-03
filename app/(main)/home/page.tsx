@@ -1,10 +1,6 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import Navbar from "@/component/navbar";
-import Sidebar from "@/component/Sidebar";
-import bg from "../../../public/home.png";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
