@@ -17,6 +17,11 @@ import { faDatabase, faServer } from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
   const [sectionActive, setSectionActive] = useState("home");
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  function openSidebar() {
+    setSidebarOpen(!sidebarOpen);
+    console.warn("sidebar ", sidebarOpen);
+  }
   useEffect(() => {
     const handleScroll = () => {
       let konten: HTMLElement | null = document.getElementById("konten")!;
@@ -58,6 +63,28 @@ export default function Page() {
             className="flex flex-1 bg-black overflow-y-auto no-scrollbar paragraph px-4"
             id="konten"
           >
+            {!sidebarOpen && (
+              <button
+                type="button"
+                className="fixed items-center p-0 mt-2 ml-0 text-sm text-white rounded-lg lg:hidden"
+                onClick={openSidebar}
+              >
+                <span className="sr-only">Open sidebar</span>
+                <svg
+                  className="w-6 h-6"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    fillRule="evenodd"
+                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                  ></path>
+                </svg>
+              </button>
+            )}
             <div className=" pt-5">
               <section
                 id="home"
@@ -68,14 +95,14 @@ export default function Page() {
                     <div className="py-8 px-4 mx-5 max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
                       <div className="flex flex-col justify-center">
                         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">
-                          Hello, I am Aditya
+                          Hello, I am Aditya Suryadi
                         </h1>
                         <p className="mb-6 text-lg font-normal text-white lg:text-xl dark:text-gray-400">
                           Full Stack Developer
                         </p>
                         <a
-                          href="#"
-                          className="text-white dark:text-blue-500 hover:underline hover:text-green-600 font-medium text-lg inline-flex items-center"
+                          href="https://www.linkedin.com/in/aditya-suryadi-7966b01b5/"
+                          className="text-white dark:text-blue-500 hover:underline hover:text-emerald-400 font-medium text-lg inline-flex items-center"
                         >
                           Hire Me
                           <svg
@@ -98,7 +125,8 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <h1 className="text-9xl font-bold">{`</>`}</h1>
+
+                <h1 className="text-9xl font-bold text-green-600">{`</>`}</h1>
               </section>
 
               <section id="about" className="bg-black">
@@ -110,11 +138,12 @@ export default function Page() {
                     <div className="">
                       <h1 className="text-white text-2xl mt-6">Bio</h1>
                       <p className="mt-4 text-white text-lg tracking-wider">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Voluptate earum eligendi sit, quis magnam architecto
-                        dolore, ratione commodi hic quod facilis debitis saepe
-                        veniam possimus aspernatur perferendis nesciunt
-                        veritatis voluptatibus.
+                        I am a Fullstack Developer with more than 4 years of
+                        experience in software development. I have a deep
+                        passion for creating innovative technology solutions and
+                        supporting business growth. I love solving technical
+                        challenges and constantly learning to stay relevant in
+                        an ever-evolving industry.
                       </p>
                     </div>
                   </div>
@@ -260,12 +289,39 @@ export default function Page() {
               >
                 <div className="">
                   <h1 className="text-2xl">Portofolio</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fuga repudiandae, eius hic corporis iusto laborum odit! Et
-                    illo adipisci odit ex voluptatibus, soluta, maiores aliquid
-                    atque culpa cupiditate doloremque harum.
-                  </p>
+                  <ul className="text-white mt-4 list-disc mx-5">
+                    <li className="pt-3 hover:text-green-600">
+                      Complete Course DICODING Devops Learning Path Create
+                      deploy simple app and mongodb.Using Kubernetes and also
+                      deploying monitoring app using grafana and prometheus
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Complete Course DICODING Back End Learning Path Create API
+                      with Hapi js and using Clean Architecture ,Continuous
+                      Integration dan Continuous Deployment
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Complete Course HACKTIV 8 Course GO Programming Create API
+                      usong GIN Framework and postgresql
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Create HRM Application using Laravel,vue Js and mysql
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Create Audit Management System using Laravel,Mysql and
+                      Vuejs.
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Refactoring API and implement web socket and pusher for
+                      handle realtime monitoring queue
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Create and refactoring Queue System using Yii Framework
+                    </li>
+                    <li className="pt-3 hover:text-green-600">
+                      Create Service WA gateway using Go and RabbitMq
+                    </li>
+                  </ul>
                 </div>
               </section>
             </div>
@@ -273,51 +329,85 @@ export default function Page() {
         </div>
         <div className="flex bg-black w-64 p-4 no-scrollbar">
           <div className="basis-1/4  pt-5">
-            <section className="my-5">
-              <ul className="flex flex-wrap items-center text-gray-900 dark:text-white">
-                <li>
-                  <a href="https://github.com/adityasuryadi" target="_blank">
-                    <FontAwesomeIcon
-                      color="white"
-                      icon={faGithub}
-                      className="mr-4 hover:underline md:mr-6"
-                    ></FontAwesomeIcon>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/aditya-suryadi-7966b01b5/"
-                    target="_blank"
-                  >
-                    <FontAwesomeIcon
-                      icon={faLinkedin}
-                      color="white"
-                      className="mr-4 hover:underline md:mr-6"
-                      size="lg"
-                    ></FontAwesomeIcon>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://medium.com/@adityasuryaditya"
-                    target="_blank"
-                  >
-                    <FontAwesomeIcon
-                      icon={faMedium}
-                      color="white"
-                      className="mr-4 hover:underline md:mr-6"
-                    ></FontAwesomeIcon>
-                  </a>
-                </li>
-              </ul>
-            </section>
-            <p className="my-5 text-white">Fullstack Developer</p>
             {/* <Sidebar></Sidebar> */}
+            {/* <button
+              data-drawer-target="default-sidebar"
+              data-drawer-toggle="default-sidebar"
+              aria-controls="default-sidebar"
+              type="button"
+              className="inline-flex items-center p-0 mt-2 ml-0 text-sm text-white rounded-lg"
+              onClick={openSidebar}
+            >
+              <span className="sr-only">Open sidebar</span>
+              <svg
+                className="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  fillRule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button> */}
+
             <aside
-              className="top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+              className="top-0 right-0 z-40 w-64 h-screen"
               aria-label="Sidebar"
             >
-              <div className="fixed top-0 left-0 right-0">
+              {/* top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 */}
+              <div
+                className={
+                  sidebarOpen
+                    ? "lg:hidden md:hidden fixed top-0 left-0 pl-3 z-40 w-32 h-screen bg-slate-900 "
+                    : "top-0 right-0 -z-10 w-64 h-screen "
+                }
+              >
+                {
+                  <ul className="flex flex-wrap items-center mt-5 text-gray-900 dark:text-white">
+                    <li>
+                      <a
+                        href="https://github.com/adityasuryadi"
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon
+                          color="white"
+                          icon={faGithub}
+                          className="mr-4 hover:underline md:mr-6"
+                        ></FontAwesomeIcon>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/in/aditya-suryadi-7966b01b5/"
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon
+                          icon={faLinkedin}
+                          color="white"
+                          className="mr-4 hover:underline md:mr-6"
+                          size="lg"
+                        ></FontAwesomeIcon>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://medium.com/@adityasuryaditya"
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon
+                          icon={faMedium}
+                          color="white"
+                          className="mr-4 hover:underline md:mr-6"
+                        ></FontAwesomeIcon>
+                      </a>
+                    </li>
+                  </ul>
+                }
+                {/* <div className="top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 "> */}
                 <ul className="text-white">
                   <li className="mt-4">
                     <a
@@ -370,6 +460,15 @@ export default function Page() {
           </div>
         </div>
       </div>
+      {sidebarOpen ? (
+        <div
+          drawer-backdrop=""
+          className="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30"
+          onClick={() => {
+            openSidebar();
+          }}
+        ></div>
+      ) : null}
     </main>
   );
 }
